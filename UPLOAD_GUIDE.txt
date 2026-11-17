@@ -1,0 +1,11 @@
+﻿업로드 방법
+1. 이 ZIP을 압축 해제합니다.
+2. index.html, style.css, script.js, firebase-config.js 및 PNG 이미지 파일들을 모두 선택합니다.
+3. GitHub 저장소 첫 화면 > Add file > Upload files에서 선택한 파일들을 올립니다.
+4. 같은 이름의 기존 파일을 교체한 후 Commit changes를 누릅니다.
+5. GitHub Actions에서 Pages 배포가 완료되면 사이트에서 Ctrl+Shift+R로 새로고침합니다.
+
+이번 버전은 모든 사이트 파일을 같은 위치에 놓도록 연결 경로를 수정했습니다.
+하위 폴더를 만들거나 유지할 필요가 없습니다.
+디자인 CSS와 원본 PNG 이미지는 이전 디자인과 동일합니다.
+Firebase 설정과 관리자 UID 2개는 반영되어 있습니다. 기존 Firebase 규칙은 그대로 사용합니다.
