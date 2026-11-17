@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="숭이가 좋아하는 장소들을 모은 보물지도">
+  <title>수도권 | 숭이의 보물지도</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Black+Han+Sans&family=Hahmlet:wght@100..900&family=Moirai+One&family=Orbit&family=Stylish&display=swap" rel="stylesheet">
+</head>
+<body data-region="top">
+  <div class="page-wrap">
+
+    <header class="site-header">
+      <a class="brand" href="index.html">🏴‍☠️ 숭이의 보물지도</a>
+      <button id="hamburger" class="hamburger" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="site-menu">☰</button>
+      <nav id="site-menu" class="menu" aria-label="페이지 이동">
+        <a href="index.html">🏠 메인</a>
+        <a href="top.html">📍 수도권</a>
+        <a href="middle.html">📍 중부·강원</a>
+        <a href="bottom.html">📍 남부</a>
+        <span class="menu-divider"></span>
+        <button type="button" id="authOpen" class="menu-login">🔐 관리자 로그인</button>
+        <button type="button" id="logoutBtn" class="menu-login" hidden>🚪 로그아웃</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="region-intro">
+        <span class="eyebrow">TREASURE COLLECTION</span>
+        <h1>🏙️ 수도권</h1>
+        <p style="font-family: 'Hahmlet', sans-serif;">숭이가 아끼는 수도권의 보물 같은 장소들이야.</p>
+        <div class="ribbon">✦ &nbsp; 추억을 차곡차곡 모으는 중 &nbsp; ✦</div>
+      </section>
+
+      <section class="places-section">
+        <div class="section-heading">
+          <h2>📜 보물 기록장</h2>
+          <span id="placeCount" class="count"></span>
+        </div>
+
+        <div id="adminTools" hidden>
+          <button id="formToggle" class="primary" type="button" aria-expanded="false">＋ 새로운 장소를 기록하자 📜</button>
+          <form id="placeForm" class="place-form" hidden>
+            <h3 id="formTitle">새로운 장소 기록하기</h3>
+            <label>장소 사진
+              <input id="placePhoto" type="file" accept="image/*">
+            </label>
+            <img id="photoPreview" alt="선택한 장소 사진 미리보기" hidden width="160">
+            <label id="removePhotoLabel" hidden><input id="removePhoto" type="checkbox"> 기존 사진 삭제</label>
+            <p class="form-hint">사진은 자동으로 작게 압축해 저장해요. 큰 사진은 시간이 걸릴 수 있어요.</p>
+            <label>장소 이름
+              <input id="placeName" maxlength="60" required placeholder="예: 숭이가 좋아하는 카페">
+            </label>
+            <label>주소
+              <input id="placeAddress" maxlength="160" required placeholder="예: 서울특별시 ...">
+            </label>
+            <label>한줄평
+              <textarea id="placeReview" maxlength="300" required rows="3" placeholder="이 장소가 특별한 이유를 적어 줘!"></textarea>
+            </label>
+            <div class="form-actions">
+              <button class="primary" type="submit" id="saveBtn">기록 저장하기</button>
+              <button class="secondary" type="button" id="cancelBtn">취소</button>
+            </div>
+            <p id="formStatus" class="status" role="status"></p>
+          </form>
+        </div>
+
+        <p id="dataStatus" class="status" role="status">보물 기록을 불러오는 중...</p>
+        <div id="placesList" class="places-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 숭이의 보물지도 · 내가 좋아하는 장소의 기록</span>
+      <a id="repoLink" href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub 저장소 ↗ (주소 설정 필요)</a>
+    </footer>
+
+  </div>
+
+  <dialog id="loginDialog" class="login-dialog">
+    <form id="loginForm" class="login-form">
+      <button type="button" id="loginClose" class="close" aria-label="닫기">×</button>
+      <h2>🔐 관리자 로그인</h2>
+      <p>보물지도를 관리하는 숭이만 입장할 수 있어요.</p>
+      <label>이메일
+        <input id="loginEmail" type="email" autocomplete="username" required placeholder="이메일 주소">
+      </label>
+      <label>비밀번호
+        <input id="loginPassword" type="password" autocomplete="current-password" required placeholder="비밀번호">
+      </label>
+      <button class="primary" type="submit">로그인</button>
+      <p id="loginStatus" class="status" role="status"></p>
+    </form>
+  </dialog>
+
+  <script type="module" src="js/script.js"></script>
+</body>
+</html>

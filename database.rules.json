@@ -1,0 +1,33 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "places": {
+      "$region": {
+        ".read": "($region === 'top' || $region === 'middle' || $region === 'bottom' || $region === 'secret')",
+        "$place": {
+          ".write": "($region === 'top' || $region === 'middle' || $region === 'bottom' || $region === 'secret') && auth != null && (auth.uid === 'PRpg8fK4kFOpsBpRUeMrSnGKbav2' || auth.uid === 'dzXWTX1L0SPqPjwtzUePxK4bW2y1')",
+          ".validate": "newData.hasChildren(['name', 'address', 'review', 'createdAt'])",
+          "name": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 60 && newData.val().matches(/.*\\S.*/)"
+          },
+          "address": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 160 && newData.val().matches(/.*\\S.*/)"
+          },
+          "review": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 300 && newData.val().matches(/[\\s\\S]*\\S[\\s\\S]*/)"
+          },
+          "photo": {
+            ".validate": "newData.isString() && newData.val().length <= 170000 && (newData.val() === '' || newData.val().matches(/^data:image\\/(jpeg|png|webp);base64,[A-Za-z0-9+\\/=]+$/) || newData.val().matches(/^https:\\/\\/.+/))"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 60000 && (!data.exists() || newData.val() === data.val())"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
+    }
+  }
+}
